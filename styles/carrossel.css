@@ -1,0 +1,16 @@
+section {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+#carrossel-content {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+}
+img {
+  width: 150px;
+  height: 150px;
+}

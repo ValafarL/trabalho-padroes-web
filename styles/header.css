@@ -1,21 +1,46 @@
-header {
+:host {
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  background-color: #1e1e2f;
+  z-index: 100;
+  width: 100%;
+}
+
+header {
+  background-color: #9d8d6b;
   color: #ffffff;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease;
 }
-nav ul {
+
+nav {
+  flex: 1;
+}
+
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 2rem;
+  width: 100%;
+}
+
+.nav-left ul,
+.nav-right ul {
+  justify-content: space-evenly;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0 2rem;
+  color: #ffffff;
 }
 
 a {
@@ -23,8 +48,93 @@ a {
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 nav a:hover {
   color: #ffaa00;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    flex-basis: 100%;
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+  .nav-right {
+    padding-top: 0;
+  }
+
+  header.open nav {
+    display: block;
+  }
+
+  header.open .logo {
+    display: none;
+  }
+
+  ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+
+  li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+  }
+
+  .nav-right ul li:last-child {
+    border-bottom: none;
+  }
+
+  nav a {
+    display: block;
+    padding: 1rem 0;
+  }
+
+  .nav-left ul,
+  .nav-right ul {
+    justify-content: center;
+  }
 }

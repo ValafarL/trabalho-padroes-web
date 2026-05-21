@@ -10,19 +10,37 @@ class Header extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /*html*/ `
             <header>
-                <a href="index.html">Cabeçalho do site</a>
-                <nav>
+                <button class="menu-toggle" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="nav-left">
                     <ul>
-                        <li><a href="mapaRegional.html">Mapa Regional</a></li>
-                        <li><a href="regiao.html">Região</a></li>
-                        <li><a href="curadoria.html">Curadoria</a></li>
-                        <li><a href="sobreOProjeto.html">Sobre o Projeto</a></li>
-                        <li><a href="dadosETendencia.html">Dados e tendencia</a></li>
-                        <li><a href="streamingEIndustria.html">streaming e industria</a></li>
+                        <li><a href="/pages/regiao.html">Região</a></li>
+                        <li><a href="/pages/sobreOProjeto.html">Sobre o Projeto</a></li>
+                    </ul>
+                </nav>
+
+                <a href="../index.html" class="logo">Logo</a>
+
+                <nav class="nav-right">
+                    <ul>
+                        <li><a href="/pages/curadoria.html">Curadoria</a></li>
+                        <li><a href="/pages/dadosETendencia.html">Dados e tendência</a></li>
+                        <li><a href="/pages/streamingEIndustria.html">Streaming e indústria</a></li>
                     </ul>
                 </nav>
             </header>
         `;
+
+    const toggleBtn = this.shadowRoot.querySelector(".menu-toggle");
+    const headerElement = this.shadowRoot.querySelector("header");
+
+    toggleBtn.addEventListener("click", () => {
+      headerElement.classList.toggle("open");
+    });
   }
 }
 

@@ -1,0 +1,13 @@
+.title {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+#brazil-map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}

@@ -18,7 +18,6 @@ class Header extends HTMLElement {
 
                 <nav class="nav-left">
                     <ul>
-                        <li><a href="/pages/regiao.html">Região</a></li>
                         <li><a href="/pages/sobreOProjeto.html">Sobre o Projeto</a></li>
                     </ul>
                 </nav>
@@ -28,7 +27,6 @@ class Header extends HTMLElement {
                 <nav class="nav-right">
                     <ul>
                         <li><a href="/pages/curadoria.html">Curadoria</a></li>
-                        <li><a href="/pages/dadosETendencia.html">Dados e tendência</a></li>
                         <li><a href="/pages/streamingEIndustria.html">Streaming e indústria</a></li>
                     </ul>
                 </nav>

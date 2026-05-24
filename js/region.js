@@ -1,8 +1,8 @@
 import { regions } from "../assets/data/regions.js";
 
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
 let region = regions["sul"];
-
-console.log(region);
 
 region["genres"].forEach((g) => {
   const genre = document.createElement("app-genre");

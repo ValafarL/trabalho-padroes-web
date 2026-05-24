@@ -6,7 +6,7 @@ import BrazilDotMap from "./components/BrazilDotMap.js";
 
 /* Calculate screen size */
 const screenWidth = window.innerWidth;
-const mapSize = Math.min(screenWidth - 40, 700);
+const mapSize = Math.min(screenWidth - 40, 600);
 
 new BrazilDotMap({
   mount: "#brazil-map",

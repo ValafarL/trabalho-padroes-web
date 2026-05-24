@@ -9,7 +9,8 @@ class Footer extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /*html*/ `
       <footer>
-        Rodapé do site
+        <p>Gilmar Ito - Lucas Cezimbra - Lucas Ganem</p>
+        <p>2026</p>
       </footer>
     `;
   }

@@ -21,3 +21,11 @@
   margin-bottom: 1.5rem;
   text-align: left;
 }
+
+#img-si {
+  display: block;
+  margin: 0 auto 2rem auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}

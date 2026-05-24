@@ -1,25 +1,18 @@
-/**
+/*
+
  * BrazilDotMap
- * A single-file, self-contained vanilla JavaScript class that renders
- * an interactive dot map of Brazil grouped by region.
- *
- * Coordinates are derived from real geographic data (IBGE / GeoJSON),
- * projected from lon/lat into normalised [0,1] canvas space.
- * 
- * NOTE: The shape and hover detection are dictated STRICTLY by the 
- * static REGION_POLYGONS array.
- *
- * Usage:
- *   new BrazilDotMap({
- *     mount: "#app",
- *     width: 700,
- *     height: 700,
- *     onRegionClick: (region) => {}
- *   });
+   Componente que renderiza mapa agrupado por região
+ 
+ * Uso:
+  new BrazilDotMap({
+    mount: "#app",
+    width: 700,
+    height: 700,
+     onRegionClick: (region) => {}
+      });
  */
 export default class BrazilDotMap {
 
-  // ─── Region metadata ──────────────────────────────────────────────────────
 
   static REGIONS = {
     norte: {
@@ -49,9 +42,9 @@ export default class BrazilDotMap {
     },
   };
 
-  // ─── Region boundary polygons ─────────────────────────────────────────────
-  // SINGLE SOURCE OF TRUTH: Adjusting these coordinates will instantly update 
-  // the map's boundary, dots, debug lines, and hover areas.
+  // ─── Bordas dos polígonos de cada região ─────────────────────────────────────────────
+  // Ajustar aqui reflete nas regiões automaticamente. 
+  // Para alterar pontos com fronteiras, é necessário atualizar o mesmo ponto nas regiões.
 
   static REGION_POLYGONS = {
     norte: [
@@ -60,7 +53,6 @@ export default class BrazilDotMap {
       [0.4835,0.0329],[0.4945,0.0253],[0.5055,0.0354],[0.5165,0.0937],
       [0.5275,0.1013],[0.5385,0.1266],[0.5604,0.1519],[0.5824,0.1570],
       [0.6374,0.1646],[0.6593,0.2025],[0.6813,0.2101],
-      // south boundary of Norte (~lat -10 line going west)
       [0.6093,0.2911],[0.6154,0.5018],[0.5414,0.4724],[0.5275,0.4177],
       [0.4835,0.4177],[0.4396,0.4130],[0.3956,0.4130],[0.3516,0.3777],
       [0.3377,0.4130],[0.2837,0.4877],[0.2218,0.4624],[0.1998,0.4371],
@@ -78,34 +70,27 @@ export default class BrazilDotMap {
       [0.6813,0.2101],[0.7363,0.2101],[0.7802,0.2329],[0.8571,0.2658],
       [0.8571,0.3418],[0.8527,0.3671],[0.8242,0.4177],[0.8022,0.4684],
       [0.7802,0.4937],[0.7692,0.5316],[0.7582,0.5696],[0.7473,0.6203],
-      // west inland border: drops through Bahia interior
       [0.7033,0.5949],[0.7293,0.5590],[0.6074,0.5284],
       [0.6154,0.3924],[0.6154,0.5018],[0.6093,0.2911],[0.6813,0.2101],
     ],
 
     "centro-oeste": [
-      // northern border shared with Norte (~lat -10)
       [0.5414,0.4724],[0.5275,0.4177],[0.4835,0.4177],[0.4396,0.4130],
       [0.3956,0.4130],[0.3516,0.3777],[0.3077,0.4130],[0.2937,0.4477],
       [0.3018,0.4424],
-      // west: Bolivia border going south
       [0.2967,0.5190],[0.3033,0.4937],[0.2967,0.4684],[0.2967,0.4430],
       [0.3077,0.5443],[0.3297,0.5696],[0.3516,0.5949],[0.3516,0.6329],
       [0.3626,0.6582],
-      // south: Paraguay / Mato Grosso do Sul
       [0.3846,0.6709],[0.4176,0.6962],[0.4286,0.7089],[0.4596,0.7135],
       [0.4835,0.6456],[0.5575,0.5949],[0.5714,0.5443],[0.5934,0.5190],
       [0.6154,0.4937],
-      // east border: shared with Nordeste / Sudeste
       [0.6154,0.3924],[0.5414,0.4724],
     ],
 
     sudeste: [
-      // north: shared with Nordeste coast / Bahia interior
       [0.7473,0.6203],[0.7363,0.6582],[0.7297,0.6835],[0.7253,0.7089],
       [0.6813,0.7215],[0.6484,0.7291],[0.6264,0.7418],[0.5934,0.7595],
       [0.5604,0.7975],[0.5560,0.8101],
-      // west border shared with Sul / Centro-Oeste
       [0.5275,0.7975],[0.5055,0.7468],[0.4835,0.7089],[0.4725,0.7009],
       [0.4286,0.7089],[0.4176,0.6962],[0.3846,0.6709],[0.4835,0.6456],
       [0.5575,0.5949],[0.5714,0.5443],[0.5934,0.5190],[0.6154,0.4937],
@@ -123,7 +108,6 @@ export default class BrazilDotMap {
     ],
   };
 
-  // ─── Region centroids (for glow anchor) ───────────────────────────────────
 
   static CENTROIDS = {
     norte:          [0.33, 0.26],
@@ -133,7 +117,7 @@ export default class BrazilDotMap {
     sul:            [0.47, 0.84],
   };
 
-  // ─── Constructor ──────────────────────────────────────────────────────────
+  // Construtor
 
   constructor({ mount = "body", width = 700, height = 700, onRegionClick } = {}) {
     this.width  = width;
@@ -155,7 +139,7 @@ export default class BrazilDotMap {
     this._startLoop();
   }
 
-  // ─── Mount ────────────────────────────────────────────────────────────────
+  // Mount
 
   _mount(selector) {
     const container = typeof selector === "string"
@@ -203,10 +187,10 @@ export default class BrazilDotMap {
     this.wrapper = wrapper;
   }
 
-  // ─── Dot generation ───────────────────────────────────────────────────────
+  // Geração dos pontos 
 
   generateDots() {
-    const STEP   = 10;   // px between dot centres
+    const STEP   = 10;   
     const RADIUS = 3.0;
     const PAD    = 14;
 
@@ -217,14 +201,14 @@ export default class BrazilDotMap {
     const rows = Math.floor((this.height - PAD * 2) / STEP);
 
     for (let row = 0; row < rows; row++) {
-      const hexOffset = (row % 2) * STEP * 0.5;   // staggered hex grid
+      const hexOffset = (row % 2) * STEP * 0.5;   
       for (let col = 0; col < cols; col++) {
         const px = PAD + col * STEP + hexOffset;
         const py = PAD + row * STEP;
         const nx = px / this.width;
         const ny = py / this.height;
 
-        // Uses strictly the region boundaries to map the dots
+        // Usar estritamente os pontos do polígono para mapear
         const region = this.getRegion(nx, ny);
         if (!region) continue;
 
@@ -233,17 +217,6 @@ export default class BrazilDotMap {
     }
   }
 
-  // ─── Region lookup ────────────────────────────────────────────────────────
-
-  getRegion(nx, ny) {
-    // Only returns a region if the point is strictly inside its polygon bounds.
-    for (const [name, poly] of Object.entries(BrazilDotMap.REGION_POLYGONS)) {
-      if (this._pointInPolygon(nx, ny, poly)) return name;
-    }
-    return null;
-  }
-
-  // ─── Ray-cast point-in-polygon ────────────────────────────────────────────
 
   _pointInPolygon(x, y, polygon) {
     let inside = false;
@@ -259,7 +232,6 @@ export default class BrazilDotMap {
     return inside;
   }
 
-  // ─── Events ───────────────────────────────────────────────────────────────
 
   _bindEvents() {
     this.canvas.addEventListener("mousemove",  (e) => this.handleMouseMove(e));
@@ -278,7 +250,6 @@ export default class BrazilDotMap {
     const nx = mx / this.width;
     const ny = my / this.height;
 
-    // Hover detection is strictly synced to region boundaries
     const region = this.getRegion(nx, ny);
     this.hoveredRegion = region;
 
@@ -305,7 +276,7 @@ export default class BrazilDotMap {
     }
   }
 
-  // ─── Animation loop ───────────────────────────────────────────────────────
+  // Loop de animação
 
   _startLoop() {
     const loop = (ts) => {
@@ -329,8 +300,6 @@ export default class BrazilDotMap {
     }
   }
 
-  // ─── Rendering ────────────────────────────────────────────────────────────
-
   render() {
     const ctx = this.ctx;
     ctx.clearRect(0, 0, this.width, this.height);
@@ -338,10 +307,8 @@ export default class BrazilDotMap {
     ctx.fillStyle = "rgb(86, 116, 248)";
     ctx.fillRect(0, 0, this.width, this.height);
 
-    // Remove or comment out this call when you are done adjusting points!
     // this._drawDebug(ctx); 
 
-    // Ambient region glow (drawn first, under dots)
     if (this.hoveredRegion) {
       this._drawRegionGlow(ctx, this.hoveredRegion);
     }
@@ -360,7 +327,6 @@ export default class BrazilDotMap {
 //       sul:            "rgba(96,165,250,0.25)",
 //     };
 
-//     // Draw strictly based on your editable regions
 //     for (const [name, poly] of Object.entries(BrazilDotMap.REGION_POLYGONS)) {
 //       ctx.beginPath();
 //       ctx.moveTo(poly[0][0] * this.width, poly[0][1] * this.height);
@@ -377,14 +343,12 @@ export default class BrazilDotMap {
 //       ctx.lineWidth = 1.5;
 //       ctx.stroke();
 
-//       // Region label
 //       const [cx, cy] = BrazilDotMap.CENTROIDS[name];
 //       ctx.fillStyle = "white";
 //       ctx.font = "bold 13px monospace";
 //       ctx.textAlign = "center";
 //       ctx.fillText(name, cx * this.width, cy * this.height);
 
-//       // Yellow editable vertices with index numbers
 //       poly.forEach(([nx, ny], i) => {
 //         const px = nx * this.width;
 //         const py = ny * this.height;
@@ -438,7 +402,7 @@ export default class BrazilDotMap {
     ctx.fillRect(0, 0, this.width, this.height);
   }
 
-  // ─── Cleanup ──────────────────────────────────────────────────────────────
+  // Cleanup 
 
   destroy() {
     if (this.animFrame) cancelAnimationFrame(this.animFrame);

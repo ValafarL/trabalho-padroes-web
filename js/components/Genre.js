@@ -1,3 +1,4 @@
+import styleGlobal from "../../styles/global.css" with { type: "css" };
 import styleGenre from "../../styles/genre.css" with { type: "css" };
 
 class Genre extends HTMLElement {
@@ -6,7 +7,7 @@ class Genre extends HTMLElement {
     this.carrossel = document.createElement("app-carrossel");
     console.log("asdasd", this.carrossel);
     this.attachShadow({ mode: "open" });
-    this.shadowRoot.adoptedStyleSheets = [styleGenre];
+    this.shadowRoot.adoptedStyleSheets = [styleGlobal, styleGenre];
   }
 
   set data(genreObj) {
@@ -20,7 +21,7 @@ class Genre extends HTMLElement {
       <section id="${genreObj.id}">
         <div id="genre-header">
             <h3>${genreObj.name} - </h3>
-            <a href="#">Playlist</a>
+            <a class="button" href="#">Playlist</a>
         </div>
         <div id="genre-description">
             <article>

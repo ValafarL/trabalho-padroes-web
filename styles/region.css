@@ -48,3 +48,14 @@
   margin: 0 auto;
   margin-top: 150px;
 }
+
+@media (max-width: 1500px) {
+  #menubar {
+    width: 90%;
+    max-width: none;
+  }
+  #region-main {
+    width: 90%;
+    margin-top: 100px;
+  }
+}

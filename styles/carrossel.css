@@ -3,8 +3,11 @@ section {
   flex-direction: row;
   gap: 20px;
   margin-top: 20px;
+  padding: 20px;
   margin-bottom: 100px;
   width: 100%;
+  border: 2px solid #b4a078;
+  border-radius: 8px;
 }
 
 #carrossel-content {
@@ -31,7 +34,7 @@ article {
   line-height: 1.6;
   text-align: justify;
   color: #1e293b;
-  max-height: 300px;
+  max-height: 200px;
   overflow-y: auto;
   padding-right: 15px;
 }
@@ -42,27 +45,4 @@ article::-webkit-scrollbar {
 article::-webkit-scrollbar-thumb {
   background-color: #b4a078;
   border-radius: 4px;
-}
-
-button {
-  align-self: center;
-  width: 90px;
-  height: 50px;
-  background-color: #3051a6;
-  color: #ffffff;
-  border: none;
-  font-weight: bold;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-align: center;
-}
-
-button:hover {
-  background-color: #4c7fff;
-}
-
-button:active {
-  background-color: #3051a6;
 }

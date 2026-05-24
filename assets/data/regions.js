@@ -18,7 +18,7 @@ export const regions = {
             name: "Lorem ipsum dolor sit amet",
             biography:
               "Phasellus vitae tincidunt ipsum. Proin posuere nibh a libero auctor fringilla. Aenean volutpat tincidunt urna. Aliquam eu mauris et urna eleifend interdum nec pretium nisl. Vivamus et metus felis. Etiam volutpat purus quis purus lobortis vehicula. Aenean hendrerit, erat ac luctus facilisis, lectus quam blandit eros, non congue ipsum nisi et lectus. Curabitur varius, orci id auctor finibus, nisi purus iaculis odio, a venenatis enim libero in ex. Phasellus dignissim imperdiet porta. Nullam feugiat et erat sed faucibus. Curabitur molestie, nibh eu porttitor placerat, purus sem vehicula tellus, in molestie erat dolor ac eros. Maecenas maximus, justo dignissim malesuada tincidunt, purus sapien commodo est, vitae varius ante nulla a metus. Sed tincidunt nibh id gravida faucibus. Suspendisse mi diam, feugiat ut ornare quis, rutrum quis ipsum. Cur abitur suscipit tincidunt faucibus. Donec nec est maximus neque ullamcorper cursus. Nulla eu mauris vestibulum, vulputate tellus eget, bibendum orci. Cras at libero tortor. Sed viverra elementum urna sed vehicula. Suspendisse tempor risus in quam pellentesque, quis malesuada dolor blandit. Nunc in mauris diam. Aliquam ac quam id est tempus commodo quis non enim. Nulla quis neque porta leo bibendum convallis.",
-            photo: { path: "https://placehold.co/300x300", alt: "Musico 1" },
+            photo: { path: "https://placehold.co/200x200", alt: "Musico 1" },
           },
         ],
       },
@@ -37,7 +37,7 @@ export const regions = {
             biography:
               "Phasellus vitae tincidunt ipsum. Proin posuere nibh a libero auctor fringilla. Aenean volutpat tincidunt urna. Aliquam eu mauris et urna eleifend interdum nec pretium nisl. Vivamus et metus felis. Etiam volutpat purus quis purus lobortis vehicula. Aenean hendrerit, erat ac luctus facilisis, lectus quam blandit eros, non congue ipsum nisi et lectus. Curabitur varius, orci id auctor finibus, nisi purus iaculis odio, a venenatis enim libero in ex. Phasellus dignissim imperdiet porta. Nullam feugiat et erat sed faucibus. Curabitur molestie, nibh eu porttitor placerat, purus sem vehicula tellus, in molestie erat dolor ac eros. Maecenas maximus, justo dignissim malesuada tincidunt, purus sapien commodo est, vitae varius ante nulla a metus. Sed tincidunt nibh id gravida faucibus. Suspendisse mi diam, feugiat ut ornare quis, rutrum quis ipsum. Cur abitur suscipit tincidunt faucibus. Donec nec est maximus neque ullamcorper cursus. Nulla eu mauris vestibulum, vulputate tellus eget, bibendum orci. Cras at libero tortor. Sed viverra elementum urna sed vehicula. Suspendisse tempor risus in quam pellentesque, quis malesuada dolor blandit. Nunc in mauris diam. Aliquam ac quam id est tempus commodo quis non enim. Nulla quis neque porta leo bibendum convallis.",
             photo: {
-              path: "https://placehold.co/300x300",
+              path: "https://placehold.co/200x200",
               alt: "Musico 2",
             },
           },
@@ -58,7 +58,7 @@ export const regions = {
             biography:
               "Phasellus vitae tincidunt ipsum. Proin posuere nibh a libero auctor fringilla. Aenean volutpat tincidunt urna. Aliquam eu mauris et urna eleifend interdum nec pretium nisl. Vivamus et metus felis. Etiam volutpat purus quis purus lobortis vehicula. Aenean hendrerit, erat ac luctus facilisis, lectus quam blandit eros, non congue ipsum nisi et lectus. Curabitur varius, orci id auctor finibus, nisi purus iaculis odio, a venenatis enim libero in ex. Phasellus dignissim imperdiet porta. Nullam feugiat et erat sed faucibus. Curabitur molestie, nibh eu porttitor placerat, purus sem vehicula tellus, in molestie erat dolor ac eros. Maecenas maximus, justo dignissim malesuada tincidunt, purus sapien commodo est, vitae varius ante nulla a metus. Sed tincidunt nibh id gravida faucibus. Suspendisse mi diam, feugiat ut ornare quis, rutrum quis ipsum. Cur abitur suscipit tincidunt faucibus. Donec nec est maximus neque ullamcorper cursus. Nulla eu mauris vestibulum, vulputate tellus eget, bibendum orci. Cras at libero tortor. Sed viverra elementum urna sed vehicula. Suspendisse tempor risus in quam pellentesque, quis malesuada dolor blandit. Nunc in mauris diam. Aliquam ac quam id est tempus commodo quis non enim. Nulla quis neque porta leo bibendum convallis.",
             photo: {
-              path: "https://placehold.co/300x300",
+              path: "https://placehold.co/200x200",
               alt: "Musico 3",
             },
           },
@@ -79,7 +79,7 @@ export const regions = {
             biography:
               "Phasellus vitae tincidunt ipsum. Proin posuere nibh a libero auctor fringilla. Aenean volutpat tincidunt urna. Aliquam eu mauris et urna eleifend interdum nec pretium nisl. Vivamus et metus felis. Etiam volutpat purus quis purus lobortis vehicula. Aenean hendrerit, erat ac luctus facilisis, lectus quam blandit eros, non congue ipsum nisi et lectus. Curabitur varius, orci id auctor finibus, nisi purus iaculis odio, a venenatis enim libero in ex. Phasellus dignissim imperdiet porta. Nullam feugiat et erat sed faucibus. Curabitur molestie, nibh eu porttitor placerat, purus sem vehicula tellus, in molestie erat dolor ac eros. Maecenas maximus, justo dignissim malesuada tincidunt, purus sapien commodo est, vitae varius ante nulla a metus. Sed tincidunt nibh id gravida faucibus. Suspendisse mi diam, feugiat ut ornare quis, rutrum quis ipsum. Cur abitur suscipit tincidunt faucibus. Donec nec est maximus neque ullamcorper cursus. Nulla eu mauris vestibulum, vulputate tellus eget, bibendum orci. Cras at libero tortor. Sed viverra elementum urna sed vehicula. Suspendisse tempor risus in quam pellentesque, quis malesuada dolor blandit. Nunc in mauris diam. Aliquam ac quam id est tempus commodo quis non enim. Nulla quis neque porta leo bibendum convallis.",
             photo: {
-              path: "https://placehold.co/300x300",
+              path: "https://placehold.co/200x200",
               alt: "Musico 4",
             },
           },
@@ -100,7 +100,7 @@ export const regions = {
             biography:
               "Phasellus vitae tincidunt ipsum. Proin posuere nibh a libero auctor fringilla. Aenean volutpat tincidunt urna. Aliquam eu mauris et urna eleifend interdum nec pretium nisl. Vivamus et metus felis. Etiam volutpat purus quis purus lobortis vehicula. Aenean hendrerit, erat ac luctus facilisis, lectus quam blandit eros, non congue ipsum nisi et lectus. Curabitur varius, orci id auctor finibus, nisi purus iaculis odio, a venenatis enim libero in ex. Phasellus dignissim imperdiet porta. Nullam feugiat et erat sed faucibus. Curabitur molestie, nibh eu porttitor placerat, purus sem vehicula tellus, in molestie erat dolor ac eros. Maecenas maximus, justo dignissim malesuada tincidunt, purus sapien commodo est, vitae varius ante nulla a metus. Sed tincidunt nibh id gravida faucibus. Suspendisse mi diam, feugiat ut ornare quis, rutrum quis ipsum. Cur abitur suscipit tincidunt faucibus. Donec nec est maximus neque ullamcorper cursus. Nulla eu mauris vestibulum, vulputate tellus eget, bibendum orci. Cras at libero tortor. Sed viverra elementum urna sed vehicula. Suspendisse tempor risus in quam pellentesque, quis malesuada dolor blandit. Nunc in mauris diam. Aliquam ac quam id est tempus commodo quis non enim. Nulla quis neque porta leo bibendum convallis.",
             photo: {
-              path: "https://placehold.co/300x300",
+              path: "https://placehold.co/200x200",
               alt: "Musico 5",
             },
           },

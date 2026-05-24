@@ -1,10 +1,11 @@
+import styleGlobal from "../../styles/global.css" with { type: "css" };
 import styleCarrossel from "../../styles/carrossel.css" with { type: "css" };
 
 class Carrossel extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.shadowRoot.adoptedStyleSheets = [styleCarrossel];
+    this.shadowRoot.adoptedStyleSheets = [styleGlobal, styleCarrossel];
   }
 
   set data(dataObj) {
@@ -14,14 +15,14 @@ class Carrossel extends HTMLElement {
   _onGetDataRender(dataObj) {
     this.shadowRoot.innerHTML = /*html*/ `
       <section>
-        <button id="prev">Anterior</button>
+        <button class="button" id="prev">Anterior</button>
         <div id="carrossel-content">
           <img src="${dataObj[0].photo.path}" alt="${dataObj[0].photo.alt}" />
           <article>
             ${dataObj[0].biography}
           </article>
         </div>
-        <button id="next">Próximo</button>
+        <button class="button" id="next">Próximo</button>
       </section>
     `;
   }

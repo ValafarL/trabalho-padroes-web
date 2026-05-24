@@ -1,6 +1,5 @@
 .title {
   text-align: center;
-  padding: 2rem 0;
 }
 
 #brazil-map {
@@ -14,7 +13,6 @@
 
 #apresentacao-mapa {
   text-align: center;
-  margin-top: 20px;
   font-size: 1.2rem;
-  color: #1e293b;
+  margin: 20px 0;
 }

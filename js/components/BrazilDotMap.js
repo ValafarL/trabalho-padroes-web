@@ -5,8 +5,8 @@
  *
  * Coordinates are derived from real geographic data (IBGE / GeoJSON),
  * projected from lon/lat into normalised [0,1] canvas space.
- * 
- * NOTE: The shape and hover detection are dictated STRICTLY by the 
+ *
+ * NOTE: The shape and hover detection are dictated STRICTLY by the
  * static REGION_POLYGONS array.
  *
  * Usage:
@@ -50,7 +50,7 @@ export default class BrazilDotMap {
   };
 
   // ─── Region boundary polygons ─────────────────────────────────────────────
-  // SINGLE SOURCE OF TRUTH: Adjusting these coordinates will instantly update 
+  // SINGLE SOURCE OF TRUTH: Adjusting these coordinates will instantly update
   // the map's boundary, dots, debug lines, and hover areas.
 
   static REGION_POLYGONS = {
@@ -178,7 +178,6 @@ export default class BrazilDotMap {
       "pointer-events:none",
       "background:rgba(10,15,26,0.92)",
       "color:#e2e8f0",
-      "font-family:'SF Pro Display','Segoe UI',system-ui,sans-serif",
       "font-size:13px",
       "font-weight:600",
       "letter-spacing:0.06em",
@@ -339,7 +338,7 @@ export default class BrazilDotMap {
     ctx.fillRect(0, 0, this.width, this.height);
 
     // Remove or comment out this call when you are done adjusting points!
-    // this._drawDebug(ctx); 
+    // this._drawDebug(ctx);
 
     // Ambient region glow (drawn first, under dots)
     if (this.hoveredRegion) {
@@ -351,54 +350,54 @@ export default class BrazilDotMap {
     }
   }
 
-//   _drawDebug(ctx) {
-//     const colors = {
-//       norte:          "rgba(34,197,94,0.25)",
-//       nordeste:       "rgba(251,146,60,0.25)",
-//       "centro-oeste": "rgba(167,139,250,0.25)",
-//       sudeste:        "rgba(251,191,36,0.25)",
-//       sul:            "rgba(96,165,250,0.25)",
-//     };
+  //   _drawDebug(ctx) {
+  //     const colors = {
+  //       norte:          "rgba(34,197,94,0.25)",
+  //       nordeste:       "rgba(251,146,60,0.25)",
+  //       "centro-oeste": "rgba(167,139,250,0.25)",
+  //       sudeste:        "rgba(251,191,36,0.25)",
+  //       sul:            "rgba(96,165,250,0.25)",
+  //     };
 
-//     // Draw strictly based on your editable regions
-//     for (const [name, poly] of Object.entries(BrazilDotMap.REGION_POLYGONS)) {
-//       ctx.beginPath();
-//       ctx.moveTo(poly[0][0] * this.width, poly[0][1] * this.height);
-//       for (let i = 1; i < poly.length; i++) {
-//         ctx.lineTo(poly[i][0] * this.width, poly[i][1] * this.height);
-//       }
-//       ctx.closePath();
-      
-//       ctx.fillStyle = colors[name];
-//       ctx.fill();
+  //     // Draw strictly based on your editable regions
+  //     for (const [name, poly] of Object.entries(BrazilDotMap.REGION_POLYGONS)) {
+  //       ctx.beginPath();
+  //       ctx.moveTo(poly[0][0] * this.width, poly[0][1] * this.height);
+  //       for (let i = 1; i < poly.length; i++) {
+  //         ctx.lineTo(poly[i][0] * this.width, poly[i][1] * this.height);
+  //       }
+  //       ctx.closePath();
 
-//       // White boundary lines
-//       ctx.strokeStyle = "rgba(255,255,255,0.7)";
-//       ctx.lineWidth = 1.5;
-//       ctx.stroke();
+  //       ctx.fillStyle = colors[name];
+  //       ctx.fill();
 
-//       // Region label
-//       const [cx, cy] = BrazilDotMap.CENTROIDS[name];
-//       ctx.fillStyle = "white";
-//       ctx.font = "bold 13px monospace";
-//       ctx.textAlign = "center";
-//       ctx.fillText(name, cx * this.width, cy * this.height);
+  //       // White boundary lines
+  //       ctx.strokeStyle = "rgba(255,255,255,0.7)";
+  //       ctx.lineWidth = 1.5;
+  //       ctx.stroke();
 
-//       // Yellow editable vertices with index numbers
-//       poly.forEach(([nx, ny], i) => {
-//         const px = nx * this.width;
-//         const py = ny * this.height;
-//         ctx.beginPath();
-//         ctx.arc(px, py, 4, 0, Math.PI * 2);
-//         ctx.fillStyle = "yellow";
-//         ctx.fill();
-//         ctx.fillStyle = "black";
-//         ctx.font = "10px monospace";
-//         ctx.textAlign = "left";
-//         ctx.fillText(i, px + 5, py + 4);
-//       });
-//     }
-//   }
+  //       // Region label
+  //       const [cx, cy] = BrazilDotMap.CENTROIDS[name];
+  //       ctx.fillStyle = "white";
+  //       ctx.font = "bold 13px monospace";
+  //       ctx.textAlign = "center";
+  //       ctx.fillText(name, cx * this.width, cy * this.height);
+
+  //       // Yellow editable vertices with index numbers
+  //       poly.forEach(([nx, ny], i) => {
+  //         const px = nx * this.width;
+  //         const py = ny * this.height;
+  //         ctx.beginPath();
+  //         ctx.arc(px, py, 4, 0, Math.PI * 2);
+  //         ctx.fillStyle = "yellow";
+  //         ctx.fill();
+  //         ctx.fillStyle = "black";
+  //         ctx.font = "10px monospace";
+  //         ctx.textAlign = "left";
+  //         ctx.fillText(i, px + 5, py + 4);
+  //       });
+  //     }
+  //   }
 
   _drawDot(ctx, dot, t) {
     const BASE = { r: 75, g: 85, b: 99 };

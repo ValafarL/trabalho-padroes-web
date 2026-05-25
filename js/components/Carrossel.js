@@ -25,6 +25,16 @@ class Carrossel extends HTMLElement {
         <button class="button" id="next">Próximo</button>
       </section>
     `;
+
+    this.shadowRoot.getElementById("prev").addEventListener("click", () => this.onClickPrev());
+    this.shadowRoot.getElementById("next").addEventListener("click", () => this.onClickNext());
+  }
+
+  onClickNext() {
+    console.log("clicou next");
+  }
+  onClickPrev() {
+    console.log("clicou prev");
   }
 }
 

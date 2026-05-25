@@ -8,6 +8,7 @@ section {
   width: 100%;
   border: 2px solid #b4a078;
   border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 #carrossel-content {
@@ -45,4 +46,25 @@ article::-webkit-scrollbar {
 article::-webkit-scrollbar-thumb {
   background-color: #b4a078;
   border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  section {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #carrossel-content {
+    flex-direction: column;
+    align-items: center;
+    order: -1;
+    flex: 0 0 100%;
+  }
+
+  article {
+    padding-right: 0;
+    max-height: none;
+    overflow-y: visible;
+  }
 }

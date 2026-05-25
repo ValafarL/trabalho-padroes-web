@@ -18,12 +18,12 @@ class Genre extends HTMLElement {
 
   _onGetDataRender(genreObj) {
     this.shadowRoot.innerHTML = /*html*/ `
-      <section id="${genreObj.id}">
-        <div id="genre-header">
-            <h3>${genreObj.name} - </h3>
-            <a class="button" href="#">Playlist</a>
-        </div>
-        <div id="genre-description">
+      <section class="genre-container"">
+      <div id="genre-header">
+      <h3>${genreObj.name} - </h3>
+      <a class="button" href="#">Playlist</a>
+      </div>
+        <div  id="genre-description">
             <article>
                 ${genreObj.description}
             </article>

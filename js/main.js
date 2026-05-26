@@ -4,7 +4,7 @@ import "./components/Genre.js";
 import "./components/Carrossel.js";
 import BrazilDotMap from "./components/BrazilDotMap.js";
 
-/* Calculate screen size */
+/* Calcula tamanho da tela */
 const screenWidth = window.innerWidth;
 const mapSize = Math.min(screenWidth - 40, 600);
 

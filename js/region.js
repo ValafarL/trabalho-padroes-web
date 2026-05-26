@@ -4,7 +4,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 let region = regions[id] || regions["sul"];
 
+const regionTitle = document.querySelector("#region-title");
 const genresLink = document.querySelector("#genres-link");
+
+regionTitle.textContent = region.name;
 
 region["genres"].forEach((g) => {
   if (genresLink) {

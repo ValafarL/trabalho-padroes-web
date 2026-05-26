@@ -5,7 +5,6 @@ class Genre extends HTMLElement {
   constructor() {
     super();
     this.carrossel = document.createElement("app-carrossel");
-    console.log("asdasd", this.carrossel);
     this.attachShadow({ mode: "open" });
     this.shadowRoot.adoptedStyleSheets = [styleGlobal, styleGenre];
   }

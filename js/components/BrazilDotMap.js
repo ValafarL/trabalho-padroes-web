@@ -17,28 +17,28 @@ export default class BrazilDotMap {
     norte: {
       label: "Norte",
       color: { r: 34, g: 197, b: 94 },
-      hoverColor: { r: 74, g: 222, b: 128 },
+      hoverColor: { r: 74, g: 222, b: 128 }
     },
     nordeste: {
       label: "Nordeste",
       color: { r: 251, g: 146, b: 60 },
-      hoverColor: { r: 253, g: 186, b: 116 },
+      hoverColor: { r: 253, g: 186, b: 116 }
     },
     "centro-oeste": {
       label: "Centro-Oeste",
       color: { r: 167, g: 139, b: 250 },
-      hoverColor: { r: 196, g: 181, b: 253 },
+      hoverColor: { r: 196, g: 181, b: 253 }
     },
     sudeste: {
       label: "Sudeste",
       color: { r: 251, g: 191, b: 36 },
-      hoverColor: { r: 253, g: 224, b: 71 },
+      hoverColor: { r: 253, g: 224, b: 71 }
     },
     sul: {
       label: "Sul",
       color: { r: 96, g: 165, b: 250 },
-      hoverColor: { r: 147, g: 197, b: 253 },
-    },
+      hoverColor: { r: 147, g: 197, b: 253 }
+    }
   };
 
   // ─── Bordas dos polígonos de cada região ─────────────────────────────────────────────
@@ -106,7 +106,7 @@ export default class BrazilDotMap {
       [0.2637, 0.0759],
       [0.2747, 0.0633],
       [0.2857, 0.038],
-      [0.2967, 0.0127],
+      [0.2967, 0.0127]
     ],
 
     nordeste: [
@@ -128,7 +128,7 @@ export default class BrazilDotMap {
       [0.6154, 0.3924],
       [0.6154, 0.5018],
       [0.6093, 0.2911],
-      [0.6813, 0.2101],
+      [0.6813, 0.2101]
     ],
 
     "centro-oeste": [
@@ -160,7 +160,7 @@ export default class BrazilDotMap {
       [0.5934, 0.519],
       [0.6154, 0.4937],
       [0.6154, 0.3924],
-      [0.5414, 0.4724],
+      [0.5414, 0.4724]
     ],
 
     sudeste: [
@@ -189,7 +189,7 @@ export default class BrazilDotMap {
       [0.6074, 0.5284],
       [0.7293, 0.559],
       [0.7033, 0.5949],
-      [0.7473, 0.6203],
+      [0.7473, 0.6203]
     ],
 
     sul: [
@@ -219,8 +219,8 @@ export default class BrazilDotMap {
       [0.4835, 0.7089],
       [0.5055, 0.7468],
       [0.5275, 0.7975],
-      [0.556, 0.8101],
-    ],
+      [0.556, 0.8101]
+    ]
   };
 
   static CENTROIDS = {
@@ -228,7 +228,7 @@ export default class BrazilDotMap {
     nordeste: [0.72, 0.41],
     "centro-oeste": [0.43, 0.54],
     sudeste: [0.62, 0.62],
-    sul: [0.47, 0.84],
+    sul: [0.47, 0.84]
   };
 
   constructor({ mount = "body", width = 700, height = 700, onRegionClick } = {}) {
@@ -261,7 +261,7 @@ export default class BrazilDotMap {
     this.canvas.style.cssText = [
       "display:block",
       "border-radius:12px",
-      "background:rgb(86, 116, 248)",
+      "background:rgb(86, 116, 248)"
     ].join(";");
 
     this.tooltip = document.createElement("div");
@@ -281,7 +281,7 @@ export default class BrazilDotMap {
       "opacity:0",
       "transition:opacity 0.15s ease",
       "white-space:nowrap",
-      "z-index:100",
+      "z-index:100"
     ].join(";");
 
     const wrapper = document.createElement("div");
@@ -376,7 +376,7 @@ export default class BrazilDotMap {
     }
   }
 
-  handleClick(e) {
+  handleClick() {
     if (!this.hoveredRegion) return;
     const region = this.hoveredRegion;
     if (this.onRegionClick) {

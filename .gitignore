@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# NPM files
+package.json
+package-lock.json
+
+# ESLint config
+eslint.config.mjs

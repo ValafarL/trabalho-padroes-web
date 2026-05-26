@@ -14,5 +14,5 @@ new BrazilDotMap({
   height: mapSize,
   onRegionClick: (regionId) => {
     window.location.href = `/pages/regiao.html?id=${regionId}`;
-  },
+  }
 });

@@ -17,20 +17,20 @@ class Genre extends HTMLElement {
 
   _onGetDataRender(genreObj) {
     this.shadowRoot.innerHTML = /*html*/ `
-      <section class="genre-container"">
+    <article class="genre-container"">
       <div id="genre-header">
       <h3>${genreObj.name} - </h3>
       <a class="button" href="#">Playlist</a>
       </div>
         <div  id="genre-description">
-            <article>
+            <p>
                 ${genreObj.description}
-            </article>
+            </p>
             <img src="${genreObj.image.path}" alt="${genreObj.image.alt}" />
         </div>
-        <h3>Principais músicos do gênero:</h3>
+        <h3>Exemplos de músicos do ${genreObj.name}:</h3>
         <div id="carrossel"></div>
-      </section>
+    </article>
     `;
   }
 }

@@ -6,20 +6,47 @@ class Carrossel extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.adoptedStyleSheets = [styleGlobal, styleCarrossel];
+    this._data = [];
+    this._currentIndex = 0;
   }
 
   set data(dataObj) {
-    this._onGetDataRender(dataObj);
+    this._data = Array.isArray(dataObj) ? dataObj : [];
+    this._currentIndex = 0;
+    this._onGetDataRender();
   }
 
-  _onGetDataRender(dataObj) {
+  _getCurrentItem() {
+    if (!this._data.length) {
+      return null;
+    }
+
+    return this._data[this._currentIndex];
+  }
+
+  _onGetDataRender() {
+    const currentItem = this._getCurrentItem();
+
+    if (!currentItem) {
+      this.shadowRoot.innerHTML = /*html*/ `
+        <section>
+          <button class="button" id="prev" disabled>Anterior</button>
+          <div id="carrossel-content">
+            <article>Nenhum músico disponível.</article>
+          </div>
+          <button class="button" id="next" disabled>Próximo</button>
+        </section>
+      `;
+      return;
+    }
+
     this.shadowRoot.innerHTML = /*html*/ `
       <section>
         <button class="button" id="prev">Anterior</button>
         <div id="carrossel-content">
-          <img src="${dataObj[0].photo.path}" alt="${dataObj[0].photo.alt}" />
+          <img src="${currentItem.photo.path}" alt="${currentItem.photo.alt}" />
           <article>
-            ${dataObj[0].biography}
+            ${currentItem.biography}
           </article>
         </div>
         <button class="button" id="next">Próximo</button>
@@ -31,10 +58,20 @@ class Carrossel extends HTMLElement {
   }
 
   onClickNext() {
-    console.log("clicou next");
+    if (!this._data.length) {
+      return;
+    }
+
+    this._currentIndex = (this._currentIndex + 1) % this._data.length;
+    this._onGetDataRender();
   }
   onClickPrev() {
-    console.log("clicou prev");
+    if (!this._data.length) {
+      return;
+    }
+
+    this._currentIndex = (this._currentIndex - 1 + this._data.length) % this._data.length;
+    this._onGetDataRender();
   }
 }
 

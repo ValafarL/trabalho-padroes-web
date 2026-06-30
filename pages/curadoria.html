@@ -11,7 +11,7 @@
   <body>
     <app-header></app-header>
     <main id="curadoria-main">
-      <section>
+      <section class="curadoria-hero">
         <h1>Curadoria</h1>
         <article>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -21,49 +21,222 @@
           sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
           est laborum.
         </article>
-        <h2>Playlists</h2>
       </section>
-      <section>
-        <h3>Playlist 1</h3>
-        <a class="button" href="#">playlist</a>
-        <article>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </article>
-        <h3>Playlist 1</h3>
-        <a class="button" href="#">playlist</a>
-        <article>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </article>
-        <h3>Playlist 1</h3>
-        <a class="button" href="#">playlist</a>
-        <article>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </article>
-        <h3>Playlist 1</h3>
-        <a class="button" href="#">playlist</a>
-        <article>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </article>
+
+      <section aria-label="Playlists em destaque">
+        <h2>Playlists</h2>
+
+        <div class="playlist-grid">
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Vanerão</h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/playlist/1H9K6Q2VICDfIgCAvWXcV0"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify album Vanerão"
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Milonga </h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/album/1iNtQGtPN3WSKZRxG36g1K"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify album Milonga"
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Fandango Caiçara</h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/album/38DD0ng0GvB9819AMEw0IK"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify album Fandango Caiçara"
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Samba</h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/playlist/37i9dQZF1DWX4CmhTadwuL"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify playlist Samba"
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>MPB</h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9FSYmdU9mbT"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify playlist MPB"
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Bossa Nova</h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4AyFl3yqHeK"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify playlist Bossa Nova"
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Funk Carioca</h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/playlist/0FjmZL8L0YidDJW9v4gUnc"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify playlist Funk Carioca"
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Carimbó</h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/playlist/7sWlWhep6WeoaTZnIvS33Y"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify playlist Carimbó"
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Calypso </h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/playlist/37i9dQZF1EIfqlZj9tN8UU"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify playlist Calypso "
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Tecnobrega</h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/playlist/PLXC-A8zfu_loejTRsf6hJ9BZl9LvsUYNO"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify playlist Tecnobrega "
+            ></iframe>
+          </article>
+          <article class="playlist-card">
+            <div class="playlist-card__header">
+              <div>
+                <h3>Toada do Boi-Bumbá</h3>
+              </div>
+            </div>
+            <iframe
+              class="spotify-embed"
+              style="border-radius: 12px"
+              src="https://open.spotify.com/embed/playlist/36GzjSFmKA0saMyQO7sjA0"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Spotify playlist Toada do Boi-Bumbá"
+            ></iframe>
+          </article>
+        </div>
       </section>
     </main>
     <app-footer></app-footer>

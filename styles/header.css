@@ -8,6 +8,8 @@
 }
 
 header {
+  position: relative;
+  height: 40px;
   background-color: #9d8d6b;
   color: #ffffff;
   padding: 1rem 2rem;
@@ -27,6 +29,22 @@ ul {
   padding: 0;
   display: flex;
   width: 100%;
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  width: 110px;
+  height: auto;
+  max-height: 110px;
+  object-fit: contain;
 }
 
 .nav-left ul,

@@ -17,28 +17,28 @@ export default class BrazilDotMap {
     norte: {
       label: "Norte",
       color: { r: 34, g: 197, b: 94 },
-      hoverColor: { r: 74, g: 222, b: 128 }
+      hoverColor: { r: 74, g: 222, b: 128 },
     },
     nordeste: {
       label: "Nordeste",
       color: { r: 251, g: 146, b: 60 },
-      hoverColor: { r: 253, g: 186, b: 116 }
+      hoverColor: { r: 253, g: 186, b: 116 },
     },
-    "centro-oeste": {
+    centroOeste: {
       label: "Centro-Oeste",
       color: { r: 167, g: 139, b: 250 },
-      hoverColor: { r: 196, g: 181, b: 253 }
+      hoverColor: { r: 196, g: 181, b: 253 },
     },
     sudeste: {
       label: "Sudeste",
       color: { r: 251, g: 191, b: 36 },
-      hoverColor: { r: 253, g: 224, b: 71 }
+      hoverColor: { r: 253, g: 224, b: 71 },
     },
     sul: {
       label: "Sul",
       color: { r: 96, g: 165, b: 250 },
-      hoverColor: { r: 147, g: 197, b: 253 }
-    }
+      hoverColor: { r: 147, g: 197, b: 253 },
+    },
   };
 
   // ─── Bordas dos polígonos de cada região ─────────────────────────────────────────────
@@ -106,7 +106,7 @@ export default class BrazilDotMap {
       [0.2637, 0.0759],
       [0.2747, 0.0633],
       [0.2857, 0.038],
-      [0.2967, 0.0127]
+      [0.2967, 0.0127],
     ],
 
     nordeste: [
@@ -125,13 +125,12 @@ export default class BrazilDotMap {
       [0.7033, 0.5949],
       [0.7293, 0.559],
       [0.6074, 0.5284],
-      [0.6154, 0.3924],
       [0.6154, 0.5018],
       [0.6093, 0.2911],
-      [0.6813, 0.2101]
+      [0.6813, 0.2101],
     ],
 
-    "centro-oeste": [
+    centroOeste: [
       [0.5414, 0.4724],
       [0.5275, 0.4177],
       [0.4835, 0.4177],
@@ -159,8 +158,7 @@ export default class BrazilDotMap {
       [0.5714, 0.5443],
       [0.5934, 0.519],
       [0.6154, 0.4937],
-      [0.6154, 0.3924],
-      [0.5414, 0.4724]
+      [0.5414, 0.4724],
     ],
 
     sudeste: [
@@ -189,7 +187,7 @@ export default class BrazilDotMap {
       [0.6074, 0.5284],
       [0.7293, 0.559],
       [0.7033, 0.5949],
-      [0.7473, 0.6203]
+      [0.7473, 0.6203],
     ],
 
     sul: [
@@ -219,16 +217,16 @@ export default class BrazilDotMap {
       [0.4835, 0.7089],
       [0.5055, 0.7468],
       [0.5275, 0.7975],
-      [0.556, 0.8101]
-    ]
+      [0.556, 0.8101],
+    ],
   };
 
   static CENTROIDS = {
     norte: [0.33, 0.26],
     nordeste: [0.72, 0.41],
-    "centro-oeste": [0.43, 0.54],
+    centroOeste: [0.43, 0.54],
     sudeste: [0.62, 0.62],
-    sul: [0.47, 0.84]
+    sul: [0.47, 0.84],
   };
 
   constructor({ mount = "body", width = 700, height = 700, onRegionClick } = {}) {
@@ -241,6 +239,11 @@ export default class BrazilDotMap {
     this.transitionProgress = {};
     this.lastTimestamp = 0;
 
+    // Detecta se o dispositivo não suporta hover real (touch/mobile).
+    // Nesses casos, usamos um efeito estático (tint + label) sempre visível
+    // por região, em vez de depender de hover do mouse.
+    this.isStaticMode = this._detectStaticMode();
+
     for (const key of Object.keys(BrazilDotMap.REGIONS)) {
       this.transitionProgress[key] = 0;
     }
@@ -251,6 +254,13 @@ export default class BrazilDotMap {
     this._startLoop();
   }
 
+  _detectStaticMode() {
+    if (typeof window === "undefined" || !window.matchMedia) return false;
+    // (hover: none) cobre a maioria dos touch devices; pointer: coarse cobre
+    // também tablets/híbridos onde hover contínuo não é confiável.
+    return window.matchMedia("(hover: none), (pointer: coarse)").matches;
+  }
+
   _mount(selector) {
     const container = typeof selector === "string" ? document.querySelector(selector) : selector;
     if (!container) throw new Error(`BrazilDotMap: mount target "${selector}" not found.`);
@@ -258,11 +268,9 @@ export default class BrazilDotMap {
     this.canvas = document.createElement("canvas");
     this.canvas.width = this.width;
     this.canvas.height = this.height;
-    this.canvas.style.cssText = [
-      "display:block",
-      "border-radius:12px",
-      "background:rgb(86, 116, 248)"
-    ].join(";");
+    this.canvas.style.cssText = ["display:block", "border-radius:12px", "background:#dddddd"].join(
+      ";"
+    );
 
     this.tooltip = document.createElement("div");
     this.tooltip.style.cssText = [
@@ -281,13 +289,17 @@ export default class BrazilDotMap {
       "opacity:0",
       "transition:opacity 0.15s ease",
       "white-space:nowrap",
-      "z-index:100"
+      "z-index:100",
     ].join(";");
 
     const wrapper = document.createElement("div");
     wrapper.style.cssText = "position:relative;display:inline-block;";
     wrapper.appendChild(this.canvas);
-    wrapper.appendChild(this.tooltip);
+    // Em modo estático (mobile), o nome da região é desenhado direto no canvas,
+    // então a tooltip flutuante (que depende de mousemove) não é necessária.
+    if (!this.isStaticMode) {
+      wrapper.appendChild(this.tooltip);
+    }
     container.appendChild(wrapper);
 
     this.ctx = this.canvas.getContext("2d");
@@ -343,12 +355,15 @@ export default class BrazilDotMap {
   }
 
   _bindEvents() {
-    this.canvas.addEventListener("mousemove", (e) => this.handleMouseMove(e));
-    this.canvas.addEventListener("mouseleave", () => {
-      this.hoveredRegion = null;
-      this.tooltip.style.opacity = "0";
-      this.canvas.style.cursor = "default";
-    });
+    // Em modo estático não há hover real, então só precisamos do clique/tap.
+    if (!this.isStaticMode) {
+      this.canvas.addEventListener("mousemove", (e) => this.handleMouseMove(e));
+      this.canvas.addEventListener("mouseleave", () => {
+        this.hoveredRegion = null;
+        this.tooltip.style.opacity = "0";
+        this.canvas.style.cursor = "default";
+      });
+    }
     this.canvas.addEventListener("click", (e) => this.handleClick(e));
   }
 
@@ -376,9 +391,17 @@ export default class BrazilDotMap {
     }
   }
 
-  handleClick() {
-    if (!this.hoveredRegion) return;
-    const region = this.hoveredRegion;
+  handleClick(e) {
+    // Em modo estático, o "hover" não existe; descobrimos a região
+    // diretamente a partir da posição do toque/clique.
+    let region = this.hoveredRegion;
+    if (this.isStaticMode) {
+      const rect = this.canvas.getBoundingClientRect();
+      const mx = (e.clientX - rect.left) * (this.width / rect.width);
+      const my = (e.clientY - rect.top) * (this.height / rect.height);
+      region = this.getRegion(mx / this.width, my / this.height);
+    }
+    if (!region) return;
     if (this.onRegionClick) {
       this.onRegionClick(region);
     } else {
@@ -392,7 +415,9 @@ export default class BrazilDotMap {
     const loop = (ts) => {
       const dt = Math.min((ts - this.lastTimestamp) / 1000, 0.05);
       this.lastTimestamp = ts;
-      this._updateTransitions(dt);
+      if (!this.isStaticMode) {
+        this._updateTransitions(dt);
+      }
       this.render();
       this.animFrame = requestAnimationFrame(loop);
     };
@@ -415,64 +440,79 @@ export default class BrazilDotMap {
     const ctx = this.ctx;
     ctx.clearRect(0, 0, this.width, this.height);
 
-    ctx.fillStyle = "rgb(86, 116, 248)";
+    ctx.fillStyle = "#dddddd";
     ctx.fillRect(0, 0, this.width, this.height);
 
     // this._drawDebug(ctx);
 
-    if (this.hoveredRegion) {
+    if (!this.isStaticMode && this.hoveredRegion) {
       this._drawRegionGlow(ctx, this.hoveredRegion);
     }
 
     for (const dot of this.dots) {
-      this._drawDot(ctx, dot, this.transitionProgress[dot.region] || 0);
+      if (this.isStaticMode) {
+        this._drawStaticDot(ctx, dot);
+      } else {
+        const t = this.transitionProgress[dot.region] || 0;
+        this._drawDot(ctx, dot, t);
+      }
     }
   }
 
-  //   _drawDebug(ctx) {
-  //     const colors = {
-  //       norte:          "rgba(34,197,94,0.25)",
-  //       nordeste:       "rgba(251,146,60,0.25)",
-  //       "centro-oeste": "rgba(167,139,250,0.25)",
-  //       sudeste:        "rgba(251,191,36,0.25)",
-  //       sul:            "rgba(96,165,250,0.25)",
-  //     };
+  // Modo estático (mobile): cada ponto é pintado direto com um tom suave
+  // da cor da própria região, sem fundo, contorno, label ou brilho.
+  _drawStaticDot(ctx, dot) {
+    const { color } = BrazilDotMap.REGIONS[dot.region];
+    ctx.beginPath();
+    ctx.arc(dot.x, dot.y, this.dotRadius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},0.55)`;
+    ctx.fill();
+  }
 
-  //     for (const [name, poly] of Object.entries(BrazilDotMap.REGION_POLYGONS)) {
-  //       ctx.beginPath();
-  //       ctx.moveTo(poly[0][0] * this.width, poly[0][1] * this.height);
-  //       for (let i = 1; i < poly.length; i++) {
-  //         ctx.lineTo(poly[i][0] * this.width, poly[i][1] * this.height);
-  //       }
-  //       ctx.closePath();
+  // _drawDebug(ctx) {
+  //   const colors = {
+  //     norte: "rgba(34,197,94,0.25)",
+  //     nordeste: "rgba(251,146,60,0.25)",
+  //     "centroOeste": "rgba(167,139,250,0.25)",
+  //     sudeste: "rgba(251,191,36,0.25)",
+  //     sul: "rgba(96,165,250,0.25)",
+  //   };
 
-  //       ctx.fillStyle = colors[name];
-  //       ctx.fill();
-
-  //       ctx.strokeStyle = "rgba(255,255,255,0.7)";
-  //       ctx.lineWidth = 1.5;
-  //       ctx.stroke();
-
-  //       const [cx, cy] = BrazilDotMap.CENTROIDS[name];
-  //       ctx.fillStyle = "white";
-  //       ctx.font = "bold 13px monospace";
-  //       ctx.textAlign = "center";
-  //       ctx.fillText(name, cx * this.width, cy * this.height);
-
-  //       poly.forEach(([nx, ny], i) => {
-  //         const px = nx * this.width;
-  //         const py = ny * this.height;
-  //         ctx.beginPath();
-  //         ctx.arc(px, py, 4, 0, Math.PI * 2);
-  //         ctx.fillStyle = "yellow";
-  //         ctx.fill();
-  //         ctx.fillStyle = "black";
-  //         ctx.font = "10px monospace";
-  //         ctx.textAlign = "left";
-  //         ctx.fillText(i, px + 5, py + 4);
-  //       });
+  //   for (const [name, poly] of Object.entries(BrazilDotMap.REGION_POLYGONS)) {
+  //     ctx.beginPath();
+  //     ctx.moveTo(poly[0][0] * this.width, poly[0][1] * this.height);
+  //     for (let i = 1; i < poly.length; i++) {
+  //       ctx.lineTo(poly[i][0] * this.width, poly[i][1] * this.height);
   //     }
+  //     ctx.closePath();
+
+  //     ctx.fillStyle = colors[name];
+  //     ctx.fill();
+
+  //     ctx.strokeStyle = "rgba(255,255,255,0.7)";
+  //     ctx.lineWidth = 1.5;
+  //     ctx.stroke();
+
+  //     const [cx, cy] = BrazilDotMap.CENTROIDS[name];
+  //     ctx.fillStyle = "white";
+  //     ctx.font = "bold 13px monospace";
+  //     ctx.textAlign = "center";
+  //     ctx.fillText(name, cx * this.width, cy * this.height);
+
+  //     poly.forEach(([nx, ny], i) => {
+  //       const px = nx * this.width;
+  //       const py = ny * this.height;
+  //       ctx.beginPath();
+  //       ctx.arc(px, py, 4, 0, Math.PI * 2);
+  //       ctx.fillStyle = "yellow";
+  //       ctx.fill();
+  //       ctx.fillStyle = "black";
+  //       ctx.font = "10px monospace";
+  //       ctx.textAlign = "left";
+  //       ctx.fillText(i, px + 5, py + 4);
+  //     });
   //   }
+  // }
 
   _drawDot(ctx, dot, t) {
     const BASE = { r: 75, g: 85, b: 99 };

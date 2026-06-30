@@ -22,7 +22,9 @@ class Header extends HTMLElement {
                     </ul>
                 </nav>
 
-                <a href="../index.html" class="logo">Logo</a>
+                <a href="../index.html" class="logo">
+                  <img src="../assets/images/logo.png" class="logo-img" alt="Logo">
+                </a>
 
                 <nav class="nav-right">
                     <ul>

@@ -1,28 +1,72 @@
 .content-wrapper {
   max-width: 800px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 2rem 1.5rem 4rem;
 }
 
 .content-wrapper h1 {
   font-weight: 700;
-  font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  text-align: center;
 }
 
-.content-wrapper p {
-  font-weight: 400;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  text-align: left;
-}
-
-#img-si {
+.main-image {
   display: block;
-  margin: 0 auto 2rem auto;
-  max-width: 100%;
+  width: 100%;
+  max-width: 600px;
   height: auto;
+  margin: 0 auto 2rem;
   border-radius: 8px;
+}
+
+article {
+  font-weight: 400;
+  line-height: 1.7;
+  color: #222;
+}
+
+article h2 {
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+article p {
+  margin-bottom: 1.25rem;
+}
+
+.references {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ddd;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.references h2 {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.references p {
+  margin-bottom: 1rem;
+}
+
+.references ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.references li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.references a {
+  color: #1a5276;
+  text-decoration: underline;
+}
+
+.references a:hover {
+  color: #154360;
 }

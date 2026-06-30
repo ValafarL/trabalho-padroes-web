@@ -17,10 +17,10 @@ class Genre extends HTMLElement {
 
   _onGetDataRender(genreObj) {
     this.shadowRoot.innerHTML = /*html*/ `
-    <article class="genre-container"">
+    <article class="genre-container">
       <div id="genre-header">
       <h3>${genreObj.name} - </h3>
-      <a class="button" href="#">Playlist</a>
+      <a class="button" href="${genreObj.playlist}" target="_blank" rel="noopener noreferrer">Playlist</a>
       </div>
         <div  id="genre-description">
             <p>

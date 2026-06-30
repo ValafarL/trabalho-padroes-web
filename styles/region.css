@@ -1,3 +1,8 @@
+h2 {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}
+
 #menubar {
   position: fixed;
   top: 90px;
@@ -46,7 +51,7 @@
   margin-top: 150px;
 }
 
-#history{
+#history {
   white-space: pre-line;
 }
 app-genre {
@@ -79,7 +84,7 @@ app-genre {
     padding: 0px;
     margin: 0px;
   }
-  #region-title{
+  #region-title {
     font-size: 1.2rem;
   }
   #genres-link {
